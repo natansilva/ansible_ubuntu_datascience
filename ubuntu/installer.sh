@@ -9,7 +9,7 @@ apt-get install -y ansible git
 
 ## Installing Ansible and Git
 cd /tmp/
-git clone https://github.com/wesleyit/ansible_datascience.git
+git clone https://github.com/natansilva/ansible_datascience.git
 cd ansible_datascience
 
 ## Running Ansible
