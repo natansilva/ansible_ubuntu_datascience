@@ -51,6 +51,19 @@
   - name: Install R studio
     apt:
       deb: https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb
+  
+  - name: Add VSCode apt key
+    apt_key: https://packages.microsoft.com/keys/microsoft.as
+  
+  - name: Add VSCode apt repository
+    apt_repository:
+      repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+  
+  - name: Install VSCode
+    apt:
+      state: present
+      update_cache: yes
+      name: code
 
   - name: Install docker packages requirements
     apt:
@@ -67,7 +80,7 @@
 
   - name: Add Docker APT repository
     apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+      repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
 
   - name: Install Docker
     apt:

@@ -12,6 +12,7 @@ The follow packages will be installed after run ansible:
 - beautifulsoup4, boto3, flask, jupyterlab, keras, matplotlib, numpy, pandas, requests, scipy, scikit-learn, seaborn, tensorflow pip packages
 - R
 - RStudio
+- VSCode
 
 ## INSPIRATION
 This repository is strongly inspired in [this repository](https://github.com/wesleyit/debian_workstation_devops) created by [Wesley](https://github.com/wesleyit)
