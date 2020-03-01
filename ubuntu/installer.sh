@@ -16,4 +16,4 @@ cd ansible_datascience
 echo "Hello! It is time to install some packages.
 It will take a long time, go take a coffee (a long one)."
 
-ansible-playbook -i debian/.ansible-hosts playbook.yml
+ansible-playbook -i debian/.ansible-hosts debian/playbook.yml
