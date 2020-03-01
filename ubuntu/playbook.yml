@@ -1,0 +1,90 @@
+- hosts: 127.0.0.1
+  connection: local
+  remote_user: root
+  become: yes
+  become_method: sudo
+  tasks:
+  
+  - name: Install basic packages
+    apt:
+      state: present
+      update_cache: yes
+      pkg:
+      - awscli
+      - curl
+      - python-boto
+      - python3-boto
+      - python-dev
+      - python3-dev
+      - python-pip
+      - python3-pip
+      - wget
+  
+  - name: Install pip basic packages
+    pip:
+      name:
+      - beautifulsoup4
+      - flask
+      - jupyterlab
+      - keras
+      - matplotlib
+      - numpy
+      - pandas
+      - requests
+      - scipy
+      - scikit-learn
+      - seaborn
+      - tensorflow
+  
+  - name: Add R GPG Key
+    apt_key:
+      id: E298A3A825C0D65DFD57CBB651716619E084DAB9
+      keyserver: keyserver.ubuntu.com
+      state: present
+      url: 'https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
+  
+  - name: Install R
+    apt:
+      name: r-base
+      state: present
+      update_cache: yes
+  
+  - name: Install R studio
+    apt:
+      deb: https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb
+
+  - name: Install docker packages requirements
+    apt:
+      state: present
+      update_cache: yes
+      pkg:
+      - apt-transport-https
+      - ca-certificates
+      - gnupg2
+      - software-properties-common
+  
+  - name: Add Docker GPG key
+    apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+
+  - name: Add Docker APT repository
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable
+
+  - name: Install Docker
+    apt:
+      state: present
+      update_cache: yes
+      pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+  
+  - name: Create docker group
+    group:
+      local: docker
+  
+  - name: Add user to docker group
+    user:
+      name: natan
+      append: yes
+      group: docker
