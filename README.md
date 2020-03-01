@@ -9,19 +9,7 @@ The follow packages will be installed after run ansible:
 - Docker
 - Python
 - Python3
-- pip beautifulsoup4
-- pip boto3
-- pip flask
-- pip jupyterlab
-- pip keras
-- pip matplotlib
-- pip numpy
-- pip pandas
-- pip requests
-- pip scipy
-- pip scikit-learn
-- pip seaborn
-- pip tensorflow
+- beautifulsoup4, boto3, flask, jupyterlab, keras, matplotlib, numpy, pandas, requests, scipy, scikit-learn, seaborn, tensorflow pip packages
 - R
 - RStudio
 
