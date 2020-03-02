@@ -2,7 +2,9 @@
 This is a repository to install a stack for data scientists.
 
 ## HOW TO
-Execute this command for install on ubuntu enviroment: `bash -c "$(curl https://raw.githubusercontent.com/natansilva/ansible_datascience/master/ubuntu/installer.sh)"`
+1. Clone this repository
+2. `cd ansible_datascience/`
+3. Execute `installer.sh` with sudo privilegies.
 
 ## INSTALLED PACKAGES
 The follow packages will be installed after run ansible:
