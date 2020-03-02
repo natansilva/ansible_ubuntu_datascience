@@ -8,6 +8,7 @@ This is a repository to install a stack for data scientists.
 
 ## INSTALLED PACKAGES
 The follow packages will be installed after run ansible:
+- DBeaver
 - Docker
 - Python
 - Python3

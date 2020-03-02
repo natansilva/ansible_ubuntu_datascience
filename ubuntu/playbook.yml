@@ -47,6 +47,10 @@
   - name: Install VSCode
     shell:
       cmd: snap install code
+  
+  - name: Install DBeaver
+    apt:
+      deb: https://dbeaver.io/files/dbeaver-ce_latest_amd64.deb
 
   - name: Install docker packages requirements
     apt:
