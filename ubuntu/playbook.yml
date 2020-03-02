@@ -4,6 +4,10 @@
   become: yes
   become_method: sudo
   tasks:
+
+  - name: Remove old custom packages
+    shell:
+      cmd: rm -rf /etc/apt/sources.list.d/*
   
   - name: Install basic packages
     apt:
@@ -16,6 +20,7 @@
       - python3-dev
       - python-pip
       - python3-pip
+      - r-base
       - wget
   
   - name: Install pip basic packages
@@ -35,35 +40,13 @@
       - seaborn
       - tensorflow
   
-  - name: Add R GPG Key
-    apt_key:
-      id: E298A3A825C0D65DFD57CBB651716619E084DAB9
-      keyserver: keyserver.ubuntu.com
-      state: present
-      url: 'https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
-  
-  - name: Install R
-    apt:
-      name: r-base
-      state: present
-      update_cache: yes
-  
   - name: Install R studio
     apt:
       deb: https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5033-amd64.deb
   
-  - name: Add VSCode apt key
-    apt_key: https://packages.microsoft.com/keys/microsoft.as
-  
-  - name: Add VSCode apt repository
-    apt_repository:
-      repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
-  
   - name: Install VSCode
-    apt:
-      state: present
-      update_cache: yes
-      name: code
+    shell:
+      cmd: snap install code
 
   - name: Install docker packages requirements
     apt:
@@ -76,11 +59,13 @@
       - software-properties-common
   
   - name: Add Docker GPG key
-    apt_key: url=https://download.docker.com/linux/ubuntu/gpg
+    shell:
+      cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-  - name: Add Docker APT repository
+  - name: Add Docker Repository
     apt_repository:
-      repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable'
+      repo: deb https://download.docker.com/linux/ubuntu bionic stable
+      state: present
 
   - name: Install Docker
     apt:
@@ -93,7 +78,8 @@
   
   - name: Create docker group
     group:
-      local: docker
+      name: docker
+      state: present
   
   - name: Add user to docker group
     user:
