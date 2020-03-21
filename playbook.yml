@@ -1,6 +1,5 @@
 - hosts: 127.0.0.1
   connection: local
-  remote_user: root
   become: yes
   become_method: sudo
   tasks:
@@ -17,6 +16,7 @@
       pkg:
       - awscli
       - curl
+      - git-all
       - python-dev
       - python3-dev
       - python-pip
