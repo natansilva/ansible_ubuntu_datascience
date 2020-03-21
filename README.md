@@ -1,18 +1,19 @@
-# ANSIBLE DATASCIENCE
-This is a repository to install a stack for data scientists.
+# ANSIBLE UBUNTU DATASCIENCE
+This is a repository to install a stack on Ubuntu enviroment for data scientists.
 
 ## HOW TO
-1. Clone this repository
-2. `cd ansible_datascience/`
-3. Execute `installer.sh` with sudo privilegies.
+1. Install ansible: `apt-get install ansible`.
+2. Clone this repository.
+3. Execute `ansible-playbook -K -i ansible-hosts playbook.yml`.
 
 ## INSTALLED PACKAGES
 The follow packages will be installed after run ansible:
 - DBeaver
 - Docker
+- Git
 - Python
 - Python3
-- beautifulsoup4, boto3, flask, jupyterlab, keras, matplotlib, numpy, pandas, requests, scipy, scikit-learn, seaborn, tensorflow pip packages
+- Pip packages: `beautifulsoup4, boto3, flask, jupyterlab, keras, matplotlib, numpy, pandas, requests, scipy, scikit-learn, seaborn, tensorflow`
 - R
 - RStudio
 - VSCode
