@@ -6,8 +6,9 @@
   tasks:
 
   - name: Remove old custom packages
-    shell:
-      cmd: rm -rf /etc/apt/sources.list.d/*
+    file:
+      path: /etc/apt/sources.list.d/*
+      state: absent
   
   - name: Install basic packages
     apt:
@@ -64,6 +65,7 @@
   
   - name: Add Docker GPG key
     shell:
+      warn: no
       cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
   - name: Add Docker Repository
