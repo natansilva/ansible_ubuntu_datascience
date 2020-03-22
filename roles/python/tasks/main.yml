@@ -1,0 +1,26 @@
+- name: Install python packages
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+    - python-dev
+    - python-pip
+    - python3-dev
+    - python3-pip
+
+- name: Install pip basic packages
+  pip:
+    name:
+    - beautifulsoup4
+    - boto3
+    - flask
+    - jupyterlab
+    - keras
+    - matplotlib
+    - numpy
+    - pandas
+    - requests
+    - scipy
+    - scikit-learn
+    - seaborn
+    - tensorflow

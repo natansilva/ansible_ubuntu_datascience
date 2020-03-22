@@ -1,0 +1,14 @@
+- name: Remove old custom packages
+  file:
+    path: /etc/apt/sources.list.d/*
+    state: absent
+
+- name: Install basic packages
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+    - awscli
+    - curl
+    - git-all
+    - wget

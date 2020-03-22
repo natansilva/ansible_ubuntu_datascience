@@ -1,0 +1,24 @@
+# - name: Install R package
+#   apt:
+#     state: present
+#     update_cache: yes
+#     pkg:
+#     - r-base
+
+- name: Get latest Rstudio version
+  uri: url=http://download2.rstudio.org/current.ver return_content=yes
+  register: rstudio_version
+
+- name: Download Rstudio .deb package
+  get_url:
+    url: https://download1.rstudio.org/desktop/bionic/amd64/rstudio-1.2.5033-amd64.deb
+    dest: /tmp/rstudio.deb
+
+- name: Install Rstudio
+  apt:
+    deb: /tmp/rstudio.deb
+
+- name: Remove Rstudio .deb package
+  file:
+    path: /tmp/rstudio.deb
+    state: absent

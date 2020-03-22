@@ -1,0 +1,44 @@
+- name: Get the current user to add to docker group
+  become: false
+  local_action: command whoami
+  register: current_user
+
+- name: Install docker packages requirements
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+    - apt-transport-https
+    - ca-certificates
+    - gnupg2
+    - software-properties-common
+
+- name: Add Docker GPG key
+  shell:
+    warn: no
+    cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+
+- name: Install Docker
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: Create docker group
+  group:
+    name: docker
+    state: present
+
+- name: Add current user to docker group
+  user:
+    name: current_user
+    append: yes
+    group: docker
