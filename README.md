@@ -1,5 +1,5 @@
 # ANSIBLE UBUNTU DATASCIENCE
-This is a repository to install a stack on Ubuntu enviroment for data scientists.
+This is a repository to install a stack on Ubuntu environment for data scientists.
 
 ## HOW TO
 1. Install ansible: `apt-get install ansible`.
