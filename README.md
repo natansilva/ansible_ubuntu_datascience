@@ -4,7 +4,7 @@ This is a repository to install a stack on Ubuntu enviroment for data scientists
 ## HOW TO
 1. Install ansible: `apt-get install ansible`.
 2. Clone this repository.
-3. Execute `ansible-playbook -K -i ansible-hosts playbook.yml`.
+3. Execute `ansible-playbook -K -i hosts/ansible-hosts playbook.yml`.
 
 ## INSTALLED PACKAGES
 The follow packages will be installed after run ansible:
